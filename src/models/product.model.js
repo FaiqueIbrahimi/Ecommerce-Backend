@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
-const productSchema = new mongoose.Schema({
+const productSchema = new Schema({
   name: {
     type: String,
     required: [true, "Product name is required"],
     trim: true,
-    maxLength: [120, "Product name should be less than 120 characters"]
+    maxLength: [50, "Product name should be less than 50 characters"]
   },
   description: {
     type: String,
@@ -16,10 +17,10 @@ const productSchema = new mongoose.Schema({
     required: [true, "Product price is required"],
     maxLength: [5, "Product price should not be more than 5 digits"]
   },
-  stock: {
+  count : {
     type: Number,
-    required: [true, "Product stock is required"],
-    maxLength: [4, "Product stock should not be more than 4 digits"],
+    required: [true, "Product count is required"],
+    maxLength: [4, "Product count should not be more than 4 digits"],
     default: 0
   },
   category: {
@@ -28,8 +29,7 @@ const productSchema = new mongoose.Schema({
   },
   images: [
     {
-      public_id: String,
-      url: String
+      type : String
     }
   ],
   createdAt: {
